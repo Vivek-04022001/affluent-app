@@ -1,5 +1,6 @@
 import 'package:affluent/routes/app_router.dart';
 import 'package:affluent/theme/theme.dart';
+import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 
@@ -11,6 +12,9 @@ class MainApp extends StatelessWidget {
     return Sizer(
       builder: (context, orientation, screenType) {
         return MaterialApp.router(
+          useInheritedMediaQuery: true,
+          locale: DevicePreview.locale(context),
+          builder: DevicePreview.appBuilder,
           debugShowCheckedModeBanner: false,
           theme: darkMode,
           routeInformationProvider: AppRouter.router.routeInformationProvider,
